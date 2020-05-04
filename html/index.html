@@ -5,16 +5,36 @@
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
         <title>Aplicación ToDo</title>
         <link rel="stylesheet" type="text/css" href="../style.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
+                $.ajax({
+                    url: "../php/ToDoListTasks.php",
+                    type:"post",
+                    success: function(returned) {
+                        $("#items").html(returned);
+                    }
+                });
                 $(document).on("click", "#submit", function() {
                     var dataString = $('#ToDoForm').serialize();
                     $.ajax({
-                        url: "../php/ToDoCreateTask",
+                        url: "../php/ToDoCreateTask.php",
                         type:"post",
                         data:dataString,
-                        success: function(result) {
-                            $("#items").html(result);
+                        success: function(returned) {
+                            console.log(returned);
+                        }
+                    })
+                });
+                $(document).on("click", "button", function() {
+                    var id = $(this).attr('id');
+                    $.ajax({
+                        url: "../php/ToDoDeleteTask.php",
+                        type:"post",
+                        data:{'id':id},
+                        success: function(returned) {
+                            $("#items").html(returned);
                         }
                     })
                 });
@@ -25,10 +45,11 @@
     <div>
         <h2 class="header">Aplicación ToDo Albert, Alfredo, Jose</h2>
     </div>
-    <form action="../php/ToDoCreateTask" method="post" name="ToDoForm" id="ToDoForm">
+    <form action="../php/ToDoCreateTask.php" method="post" name="ToDoForm" id="ToDoForm">
         <input class="input_anadir" type="text" name="task">
         <button class="button_anadir" type="submit" name="submit">Añadir tarea</button>
     </form>
+    <div id="error"></div>
     <div id="items"></div>
     </body>
 </html>
