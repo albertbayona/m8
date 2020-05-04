@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
         <title>Aplicación ToDo</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="../style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -15,14 +15,18 @@
                         $("#items").html(returned);
                     }
                 });
-                $(document).on("click", "#submit", function() {
+                $("#submit").on("click", function() {
                     var dataString = $('#ToDoForm').serialize();
                     $.ajax({
                         url: "../php/ToDoCreateTask.php",
                         type:"post",
                         data:dataString,
                         success: function(returned) {
-                            console.log(returned);
+                            if(returned!=="OK"){
+                                $("#error").html(returned);
+                            }else{
+                                location.reload();
+                            }
                         }
                     })
                 });
@@ -33,7 +37,7 @@
                         type:"post",
                         data:{'id':id},
                         success: function(returned) {
-                            $("#items").html(returned);
+                            location.reload();
                         }
                     })
                 });
@@ -46,7 +50,7 @@
     </div>
     <form action="../php/ToDoCreateTask.php" method="post" name="ToDoForm" id="ToDoForm">
         <input class="input_anadir" type="text" name="task">
-        <button class="button_anadir" type="submit" name="submit">Añadir tarea</button>
+        <button class="button_anadir" id="submit" type="button" name="submit">Añadir tarea</button>
     </form>
     <div id="error"></div>
     <div id="items"></div>
