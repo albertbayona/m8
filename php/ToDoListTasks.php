@@ -4,13 +4,12 @@
     $query = $dbconn->prepare('SELECT * FROM tasks;');
     $query->execute();
 
-    $tasks = '<ul>';
+    $tasks = '';
 
     while ($row = $query->fetch()) {
-        $tasks.= '<li>'.$row['task'].'<button type="button" id="'.$row['id'].'">Eliminar</button></li>';
+        $tasks.= '<p style="display: flex; align-items: baseline;"><button type="button" id="'.$row['id'].'" class="button_eliminar">X</button>'.$row['task'].'</p>';
     }
 
-    $tasks.= '</ul>';
 
     echo $tasks;
 ?>

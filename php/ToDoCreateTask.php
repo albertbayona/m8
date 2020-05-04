@@ -9,7 +9,7 @@
 
         $query->bindParam(":task", $task, PDO::PARAM_STR);
         $query->execute();
-        header ("Refresh:0; url=../html/index.html");
+        header ("Refresh:0; url=../index.html");
         echo "OK";
     }
     else {
