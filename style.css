@@ -1,44 +1,43 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,800&display=swap');
 /*font-family: 'Raleway', sans-serif; titulo*/
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 /*font-family: 'Lobster', cursive; todo*/
-*{
+* {
 	margin: 0px;
 	padding: 0px;
 	text-align: center;
-
 }
-body{
+
+body {
 	background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("https://www.mentesliberadas.com/wp-content/uploads/2018/10/apuntes-bonitos-principal.jpg");
-	/*background-image: url("https://www.mentesliberadas.com/wp-content/uploads/2018/10/apuntes-bonitos-principal.jpg");*/
 	background-size: cover;
-	/*background-repeat: no-repeat;*/
 	max-width: 100vw;
 }
-.header{
+
+.header {
 	font-family: 'Raleway', sans-serif;
 	font-size: 2.5em;
 	margin-bottom: 2%;
 	margin-top: 1%;
 }
+
 .button_anadir {
-  border: none;
-  padding: 10px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  background-color: #e7e7e7; 
-  color: black;
+	border: none;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	background-color: #e7e7e7;
+	color: black;
 }
 
-.button_anadir:active{
-  background-color: #4CAF50; 
-  color: white;
+.button_anadir:active {
+  	background-color: #4CAF50;
+  	color: white;
 }
 
-.input_anadir{
+.input_anadir {
 	width: 25%;
 	height: 30px;
 	border: 3px solid #000;
@@ -46,26 +45,40 @@ body{
 }
 
 
-.input_anadir:focus{
+.input_anadir:focus {
 	border: 3px solid #012BFF;
 }
 
-.button_eliminar{
-	border: none; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; background-color: #f44336; color: white; margin-top: 5px; margin-right: 8px; margin-left: 3vw;"
+.button_eliminar {
+	border: none;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	background-color: #f44336;
+	color: white;
+	margin-top: 5px;
+	margin-right: 8px;
 }
 
-
-.button_eliminar:active{
-	background-color: #555555;
-}
-
-#items{
-	width: 100%;
+.button_eliminar:hover,
+.button_anadir:hover {
+	cursor: pointer;
 }
 
 #box {
 	width: 90%;
 	display: flex;
 	flex-direction: column;
+}
 
+p {
+	display: flex;
+	align-items: baseline;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin-left: 3vw;
+	font-family: 'Lobster', cursive;
 }
