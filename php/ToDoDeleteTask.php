@@ -7,5 +7,5 @@
     $query->bindParam(":id", $id, PDO::PARAM_STR);
     $query->execute();
 
-    header ("Refresh:0; url=../html/index.html");
+
 ?>

@@ -10,6 +10,7 @@
         $query->bindParam(":task", $task, PDO::PARAM_STR);
         $query->execute();
         header ("Refresh:0; url=../html/index.html");
+        echo "OK";
     }
     else {
         $message = "Por favor, rellene el formulario antes de enviar";
