@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Aplicación ToDo</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script>
+            $(document).ready(function() {
+                $(document).on("click", "#submit", function() {
+                    var dataString = $('#ToDoForm').serialize();
+                    $.ajax({
+                        url: "../php/ToDoFunctions",
+                        type:"post",
+                        data:dataString,
+                        success: function(result) {
+                            $("#items").html(result);
+                        }
+                    })
+                });
+            });
+        </script>
+    </head>
+    <body>
+    <div>
+        <h2>Aplicación ToDo Albert, Alfredo, Jose</h2>
+    </div>
+    <form action="../php/ToDoFunctions" method="post" name="ToDoForm" id="ToDoForm">
+        <input type="text" name="task">
+        <button type="submit" id="submit" name="submit">Añadir tarea</button>
+    </form>
+    <div id="items"></div>
+    </body>
+</html>
